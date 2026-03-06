@@ -1,0 +1,509 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>HandlerFI — Digital Solutions & Financial Market Verification</title>
+  <meta name="description" content="HandlerFI offers digital consultation, hacked and suspended account assistance, ads restriction solutions, payment setup support, and financial market account verification support." />
+
+  <style>
+    :root{
+      --bg:#0b1020;
+      --panel:#111a33;
+      --panel2:#0f1730;
+      --text:#eaf0ff;
+      --muted:#b9c3e6;
+      --brand:#6ee7ff;
+      --brand2:#a78bfa;
+      --ok:#7CFFB2;
+      --line:rgba(255,255,255,.12);
+      --shadow: 0 18px 55px rgba(0,0,0,.35);
+      --radius: 18px;
+    }
+
+    *{ box-sizing:border-box; }
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background:
+        radial-gradient(900px 500px at 15% 10%, rgba(110,231,255,.18), transparent 65%),
+        radial-gradient(900px 500px at 85% 20%, rgba(167,139,250,.16), transparent 70%),
+        radial-gradient(800px 600px at 50% 110%, rgba(124,255,178,.10), transparent 70%),
+        var(--bg);
+      color:var(--text);
+    }
+
+    a{
+      color:inherit;
+      text-decoration:none;
+    }
+
+    .container{
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 26px 18px 70px;
+    }
+
+    /* Top bar */
+    .topbar{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:14px;
+      padding: 14px 16px;
+      border:1px solid var(--line);
+      background: rgba(17,26,51,.55);
+      backdrop-filter: blur(10px);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+    }
+
+    .logo{
+      width:44px;
+      height:44px;
+      border-radius:999px;
+      background: linear-gradient(135deg, var(--brand), var(--brand2));
+      box-shadow: 0 12px 25px rgba(110,231,255,.15);
+      display:grid;
+      place-items:center;
+      font-weight:800;
+      color:#081022;
+      letter-spacing:.5px;
+      overflow:hidden;
+    }
+
+    .brand h1{
+      font-size:16px;
+      margin:0;
+      line-height:1.1;
+    }
+
+    .brand p{
+      margin:0;
+      font-size:12px;
+      color: var(--muted);
+    }
+
+    .nav{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+
+    .pill{
+      padding:9px 12px;
+      border:1px solid var(--line);
+      border-radius:999px;
+      font-size:13px;
+      color: var(--muted);
+      background: rgba(255,255,255,.03);
+      transition: .2s ease;
+    }
+
+    .pill:hover{
+      background: rgba(255,255,255,.08);
+      color: var(--text);
+    }
+
+    /* Hero */
+    .hero{
+      margin-top: 18px;
+      padding: 28px 18px;
+      border:1px solid var(--line);
+      border-radius: calc(var(--radius) + 4px);
+      background: linear-gradient(180deg, rgba(17,26,51,.65), rgba(15,23,48,.55));
+      box-shadow: var(--shadow);
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap:18px;
+      align-items:center;
+    }
+
+    .hero h2{
+      margin:0;
+      font-size: clamp(26px, 4vw, 44px);
+      letter-spacing: -.8px;
+    }
+
+    .hero .sub{
+      margin: 10px 0 0;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.6;
+      max-width: 60ch;
+    }
+
+    .tags{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top:14px;
+    }
+
+    .tag{
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.03);
+      color: var(--muted);
+      padding: 8px 10px;
+      border-radius: 999px;
+      font-size:12px;
+    }
+
+    .ctaRow{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top:16px;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+      padding: 12px 14px;
+      border-radius: 12px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.04);
+      color: var(--text);
+      font-weight:650;
+      cursor:pointer;
+      transition: transform .15s ease, background .15s ease, border-color .15s ease;
+    }
+
+    .btn:hover{
+      transform: translateY(-1px);
+      background: rgba(255,255,255,.07);
+      border-color: rgba(255,255,255,.22);
+    }
+
+    .btn.primary{
+      background: linear-gradient(135deg, rgba(110,231,255,.95), rgba(167,139,250,.95));
+      border-color: transparent;
+      color:#081022;
+    }
+
+    .heroCard{
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(255,255,255,.03);
+      padding:16px;
+    }
+
+    .heroCard h3{
+      margin:0 0 8px;
+      font-size:15px;
+    }
+
+    .check{
+      color: var(--ok);
+      font-weight:800;
+    }
+
+    .heroCard ul{
+      margin:0;
+      padding-left:18px;
+      color: var(--muted);
+      line-height:1.7;
+      font-size:14px;
+    }
+
+    .note{
+      margin-top:10px;
+      font-size:12px;
+      color: var(--muted);
+      border-top: 1px dashed rgba(255,255,255,.18);
+      padding-top:10px;
+    }
+
+    /* Sections */
+    .grid2{
+      margin-top:18px;
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:16px;
+    }
+
+    .section{
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(17,26,51,.45);
+      box-shadow: 0 10px 40px rgba(0,0,0,.28);
+      padding:16px;
+    }
+
+    .section h3{
+      margin:0 0 10px;
+      font-size:16px;
+      display:flex;
+      align-items:center;
+      gap:8px;
+    }
+
+    .section p{
+      margin:0 0 12px;
+      color: var(--muted);
+      font-size:14px;
+      line-height:1.6;
+    }
+
+    .cards{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:10px;
+    }
+
+    .card{
+      border:1px solid var(--line);
+      border-radius:14px;
+      background: rgba(255,255,255,.03);
+      padding:12px;
+      min-height:70px;
+    }
+
+    .card b{
+      display:block;
+      margin-bottom:6px;
+    }
+
+    .card span{
+      color: var(--muted);
+      font-size:13px;
+      line-height:1.5;
+    }
+
+    .list{
+      margin:0;
+      padding-left:18px;
+      color: var(--muted);
+      line-height:1.8;
+      font-size:14px;
+    }
+
+    .contact{
+      margin-top:18px;
+      text-align:center;
+      padding:18px;
+      border:1px solid var(--line);
+      border-radius: calc(var(--radius) + 6px);
+      background: linear-gradient(180deg, rgba(17,26,51,.55), rgba(15,23,48,.45));
+      box-shadow: var(--shadow);
+    }
+
+    .contact h3{
+      margin:0 0 8px;
+    }
+
+    .socialRow{
+      margin-top:12px;
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      justify-content:center;
+    }
+
+    footer{
+      margin-top:22px;
+      color: rgba(255,255,255,.55);
+      text-align:center;
+      font-size:12px;
+    }
+
+    @media (max-width: 900px){
+      .hero{ grid-template-columns: 1fr; }
+      .grid2{ grid-template-columns: 1fr; }
+      .cards{ grid-template-columns: 1fr; }
+      .nav{ justify-content:flex-end; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+
+    <!-- TOP BAR -->
+    <div class="topbar">
+      <div class="brand">
+        <!-- Replace with logo image later if you want -->
+        <!-- Example: <img src="logo.png" class="logo" alt="HandlerFI logo"> -->
+        <div class="logo" title="Logo">HF</div>
+        <div>
+          <h1>HandlerFI</h1>
+          <p>Digital Solutions • Financial Market Verification</p>
+        </div>
+      </div>
+
+      <div class="nav">
+        <a class="pill" href="#services">Services</a>
+        <a class="pill" href="#verification">Verification</a>
+        <a class="pill" href="#contact">Contact</a>
+      </div>
+    </div>
+
+    <!-- HERO -->
+    <section class="hero">
+      <div>
+        <h2>
+          Welcome to
+          <span style="background:linear-gradient(135deg,var(--brand),var(--brand2)); -webkit-background-clip:text; background-clip:text; color:transparent;">
+            HandlerFI
+          </span>
+        </h2>
+
+        <p class="sub">
+          We offer <b>digital solutions</b> and <b>financial market account verification</b> support.
+          <br>
+          <span style="color:rgba(255,255,255,.70);">
+            Tunatoa huduma za kidijitali na msaada wa uthibitisho wa akaunti.
+          </span>
+        </p>
+
+        <div class="tags">
+          <div class="tag">Digital Consultation</div>
+          <div class="tag">Hacked / Suspended Accounts</div>
+          <div class="tag">Ads Restriction Fix</div>
+          <div class="tag">Payment Setup Support</div>
+        </div>
+
+        <div class="ctaRow">
+          <a class="btn primary" href="https://wa.me/255710375787" target="_blank" rel="noopener">
+            💬 WhatsApp Now
+          </a>
+          <a class="btn" href="#services">⚡ View Services</a>
+        </div>
+      </div>
+
+      <div class="heroCard">
+        <h3><span class="check">✔</span> What You Get</h3>
+        <ul>
+          <li>Clear step-by-step help with no confusion</li>
+          <li>Confidential handling of your issue</li>
+          <li>Fast communication and follow-up</li>
+        </ul>
+        <div class="note">
+          Tip: Professional service is what we offer. You are warmly welcome.
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section class="grid2" id="services">
+      <div class="section">
+        <h3>🛠️ Digital Solutions</h3>
+        <p>Support for social media platforms and digital issues.</p>
+
+        <div class="cards">
+          <div class="card">
+            <b>Digital Consultation</b>
+            <span>Guidance for your online challenges.</span>
+          </div>
+
+          <div class="card">
+            <b>Hacked Account Assistance</b>
+            <span>Recovery steps and account protection support.</span>
+          </div>
+
+          <div class="card">
+            <b>Suspended Account Analysis</b>
+            <span>Identify the cause and understand the next steps.</span>
+          </div>
+
+          <div class="card">
+            <b>Ads Restriction Solution</b>
+            <span>Help with restricted ads or disabled campaigns.</span>
+          </div>
+
+          <div class="card">
+            <b>TikTok / Facebook / Instagram</b>
+            <span>Support for account restrictions and related issues.</span>
+          </div>
+
+          <div class="card">
+            <b>Monetization Assistance</b>
+            <span>Guidance on setup, requirements, and approval steps.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h3>💳 Payment Setup Service</h3>
+        <p>Support for setting up and solving common payment-related issues.</p>
+
+        <ul class="list">
+          <li><b>PayPal limitation support</b></li>
+          <li><b>Payoneer account setup</b></li>
+          <li><b>Crypto payment setup and support</b></li>
+        </ul>
+
+        <p style="margin-top:12px;">
+          We help make your payment setup process easier and more reliable.
+        </p>
+      </div>
+    </section>
+
+    <!-- VERIFICATION -->
+    <section class="grid2" id="verification">
+      <div class="section">
+        <h3>📌 Financial Market Account Verification</h3>
+        <p>Support for verification requirements such as KYC and Proof of Address.</p>
+
+        <ul class="list">
+          <li><b>ID Verification</b> (NIDA, Driving License, Passport)</li>
+          <li><b>Proof of Address</b> guidance and support</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h3>🏠 Proof of Address Options</h3>
+        <p>Examples of documents commonly used:</p>
+
+        <ul class="list">
+          <li>Affidavit</li>
+          <li>Utility bill</li>
+          <li>Bank statement</li>
+        </ul>
+
+        <p style="margin-top:12px; font-size:12px; color:rgba(255,255,255,.60);">
+          Note: Getting you verified is our job. Contact us and get your problem solved.
+        </p>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="contact" id="contact">
+      <h3>Contact / Find Us</h3>
+      <p style="margin:0; color:var(--muted);">
+        Choose your preferred platform — we respond quickly.
+      </p>
+
+      <div class="socialRow">
+        <a class="btn" href="https://wa.me/255710375787" target="_blank" rel="noopener">WhatsApp</a>
+        <a class="btn" href="https://www.instagram.com/handlerfi?igsh=aXR2MmdiMjVxcHc1&utm_source=qr" target="_blank" rel="noopener">Instagram</a>
+        <a class="btn" href="#" target="_blank" rel="noopener">Facebook</a>
+        <a class="btn" href="https://x.com/handler_only?s=21" target="_blank" rel="noopener">Twitter / X</a>
+        <a class="btn" href="#" target="_blank" rel="noopener">TikTok</a>
+      </div>
+    </section>
+
+    <footer>
+      © <span id="year"></span> HandlerFI. All rights reserved.
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
